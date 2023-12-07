@@ -7,22 +7,26 @@ const fetchData = () => {
       dataArr.map(customData => {
         if (data[customData] !== "") {
           if (customData === "imagePath") {
-            document
-              .querySelector(`[data-node-name*="${customData}"]`)
-              .setAttribute("src", data[customData]);
+            const image = document.querySelector(`[data-node-name*="${customData}"]`);
+            image.setAttribute("src", data[customData]);
+            
+            // Set the desired width and height for the image
+            image.style.width = "150px"; // Adjust this value
+            image.style.height = "auto"; // Adjust this value
           } else {
             document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData];
           }
         }
 
         // Check if the iteration is over
-        // Run amimation if so
-        if ( dataArr.length === dataArr.indexOf(customData) + 1 ) {
+        // Run animation if so
+        if (dataArr.length === dataArr.indexOf(customData) + 1) {
           animationTimeline();
-        } 
+        }
       });
     });
 };
+
 
 // Animation Timeline
 const animationTimeline = () => {
